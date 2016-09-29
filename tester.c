@@ -15,12 +15,17 @@ int main(void){
 	emShowMatrix(&mat);
 	printf("\n");
 
-	emInitMatrix(&mat, 4, 100);
+	emInitMatrix(&mat, 4, 3);
 
 	emShowMatrix(&mat);
 	printf("\n");
 
-	emFreeMatrix(&mat, mat.rows);
+	emNsMatrix(&mat, 2);
+
+	emShowMatrix(&mat);
+	printf("\n");
+
+	emMatrixConstMult(&mat, 3);
 
 	emShowMatrix(&mat);
 	printf("\n");

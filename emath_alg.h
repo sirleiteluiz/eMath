@@ -32,8 +32,11 @@ void emQuadEq(double a, double b, double c, double* x1, double* x2);
 
 void emInitMatrix(em_matrix* mat, const unsigned int cols, const unsigned int rows);
 void emFreeMatrix(em_matrix* mat, const unsigned int rows);
-void emShowMatrix(em_matrix* mat);
-
+void emShowMatrix(const em_matrix* mat);
+void emSetValueMatrix(em_matrix* mat, const unsigned int col, const unsigned int row, const double value);
+void emNsMatrix(em_matrix* mat, const double value);
+void emMatrixConstSum (em_matrix* mat, const double value);
+void emMatrixConstMult (em_matrix* mat, const double value);
 
 
 #endif /* EMATH_ALG_H_ */

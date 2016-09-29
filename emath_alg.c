@@ -79,7 +79,7 @@ void emFreeMatrix(em_matrix* mat, const unsigned int rows){
 }
 
 
-void emShowMatrix(em_matrix* mat){
+void emShowMatrix(const em_matrix* mat){
 	int i, j;
 	if(mat->initiated == INITIATED){
 		for(i=0; i<mat->rows; i++){
@@ -93,4 +93,55 @@ void emShowMatrix(em_matrix* mat){
 	else{
 		printf("Matrix not initiated\n");
 	}
+}
+
+void emSetValueMatrix(em_matrix* mat, const unsigned int col, const unsigned int row, const double value){
+	if(mat->initiated == INITIATED){
+		if(mat->columns > col && mat->rows > row){
+			mat->numbers[row][col] = value;
+		}
+	}
+	return;
+}
+
+void emNsMatrix(em_matrix* mat, const double value){
+	int i, j;
+
+	if(mat->initiated == INITIATED){
+		for(i=0; i<mat->rows; i++){
+			for(j=0; j<mat->columns; j++){
+				mat->numbers[i][j] = value;
+			}
+		}
+	}
+
+	return;
+}
+
+void emMatrixConstSum (em_matrix* mat, const double value){
+	int i, j;
+
+	if(mat->initiated == INITIATED){
+		for(i=0; i<mat->rows; i++){
+			for(j=0; j<mat->columns; j++){
+				mat->numbers[i][j] += value;
+			}
+		}
+	}
+
+	return;
+}
+
+void emMatrixConstMult (em_matrix* mat, const double value){
+	int i, j;
+
+	if(mat->initiated == INITIATED){
+		for(i=0; i<mat->rows; i++){
+			for(j=0; j<mat->columns; j++){
+				mat->numbers[i][j] *= value;
+			}
+		}
+	}
+
+	return;
 }
