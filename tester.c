@@ -10,11 +10,21 @@
 #include "emath_alg.h"
 
 int main(void){
-	double x[2];
+	em_matrix mat;
 
-	emQuadEq(4, -4, 1, &x[0], &x[1]);
+	emShowMatrix(&mat);
+	printf("\n");
 
-	printf("x1=%0.4lf; x2=%0.4lf", x[0], x[1]);
+	emInitMatrix(&mat, 4, 100);
+
+	emShowMatrix(&mat);
+	printf("\n");
+
+	emFreeMatrix(&mat, mat.rows);
+
+	emShowMatrix(&mat);
+	printf("\n");
+
 	return 0;
 }
 

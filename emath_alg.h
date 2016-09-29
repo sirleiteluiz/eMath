@@ -9,8 +9,31 @@
 #ifndef EMATH_ALG_H_
 #define EMATH_ALG_H_
 
+#define NULLPTR 0
+#define ZERO 0
+#define FALSE 0
+#define TRUE !FALSE
+#define INITIATED 523
+
+typedef int em_checker;
+
+typedef struct emMatrix{
+	unsigned int columns;
+	unsigned int rows;
+	double** numbers;
+	em_checker initiated;
+} em_matrix;
+
+
+#define em_vector em_matrix
 
 
 void emQuadEq(double a, double b, double c, double* x1, double* x2);
+
+void emInitMatrix(em_matrix* mat, const unsigned int cols, const unsigned int rows);
+void emFreeMatrix(em_matrix* mat, const unsigned int rows);
+void emShowMatrix(em_matrix* mat);
+
+
 
 #endif /* EMATH_ALG_H_ */
