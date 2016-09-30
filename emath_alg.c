@@ -5,23 +5,10 @@
  *      Author: Luiz Leite
  */
 
-#include "emath_alg.h"
 #include <math.h>
 #include <malloc.h>
+#include "emath_mat.h"
 
-void emQuadEq(double a, double b, double c, double* x1, double* x2){
-	double delta = (pow(b, 2.0)-(4.0*a*c));
-
-	//delta >= 0;
-	if(delta>=0){
-		*x1 = (-b+sqrt(delta))/(2.0*a);
-		*x2 = (-b-sqrt(delta))/(2.0*a);
-	}
-
-	//delta < 0;
-
-	return;
-}
 
 void emInitMatrix(em_matrix* mat, const unsigned int cols, const unsigned int rows){
 	int i;
@@ -198,6 +185,36 @@ void emMatrixAddCol(em_matrix* mat){
 			if(!mat->numbers[i]){
 				emFreeMatrix(mat, mat->rows);
 				return;
+			}
+		}
+	}
+}
+
+void emMatrixRemoveRow(em_matrix* mat){
+	if(mat->initiated == INITIATED){
+		if(mat->rows == 1){
+			emFreeMatrix(mat, mat->rows);
+			return;
+		}
+		else{
+			free(mat->numbers[mat->rows]);
+			mat->rows--;
+			mat->numbers = realloc(mat->numbers, (mat->rows)*sizeof(mat->numbers[0]));
+		}
+	}
+}
+
+void emMatrixRemoveCol(em_matrix* mat){
+	int i;
+	if(mat->initiated == INITIATED){
+		if(mat->columns == 1){
+			emFreeMatrix(mat, mat->rows);
+			return;
+		}
+		else{
+			mat->columns--;
+			for(i=0; i<mat->rows; i++){
+				mat->numbers[i] = realloc(mat->numbers[i], (mat->columns)*sizeof(mat->numbers[0][0]));
 			}
 		}
 	}

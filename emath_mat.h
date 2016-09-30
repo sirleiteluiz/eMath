@@ -6,8 +6,8 @@
  */
 
 
-#ifndef EMATH_ALG_H_
-#define EMATH_ALG_H_
+#ifndef EMATH_MAT_H_
+#define EMATH_MAT_H_
 
 #define NULLPTR 0
 #define ZERO 0
@@ -27,9 +27,6 @@ typedef struct emMatrix{
 
 #define em_vector em_matrix
 
-
-void emQuadEq(double a, double b, double c, double* x1, double* x2);
-
 void emInitMatrix(em_matrix* mat, const unsigned int cols, const unsigned int rows);
 void emFreeMatrix(em_matrix* mat, const unsigned int rows);
 void emShowMatrix(const em_matrix* mat);
@@ -40,5 +37,7 @@ void emMatrixConstMult(em_matrix* mat, const double value);
 void emMatrixUnit(em_matrix* mat);
 void emMatrixAddRow(em_matrix* mat);
 void emMatrixAddCol(em_matrix* mat);
+void emMatrixRemoveRow(em_matrix* mat);
+void emMatrixRemoveCol(em_matrix* mat);
 
-#endif /* EMATH_ALG_H_ */
+#endif /* EMATH_MAT_H_ */

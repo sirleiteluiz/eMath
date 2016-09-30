@@ -7,7 +7,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "emath_alg.h"
+
+#include "emath_mat.h"
 
 int main(void){
 	em_matrix mat;
@@ -15,7 +16,7 @@ int main(void){
 	emShowMatrix(&mat);
 	printf("\n");
 
-	emInitMatrix(&mat, 4, 3);
+	emInitMatrix(&mat, 1, 1);
 
 	emShowMatrix(&mat);
 	printf("\n");
@@ -37,6 +38,13 @@ int main(void){
 
 	emMatrixAddCol(&mat);
 	emMatrixAddRow(&mat);
+
+	emShowMatrix(&mat);
+	printf("\n");
+
+	emMatrixRemoveCol(&mat);
+	emMatrixRemoveRow(&mat);
+	emMatrixRemoveRow(&mat);
 
 	emShowMatrix(&mat);
 	printf("\n");
