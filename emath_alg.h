@@ -39,5 +39,6 @@ void emMatrixConstSum(em_matrix* mat, const double value);
 void emMatrixConstMult(em_matrix* mat, const double value);
 void emMatrixUnit(em_matrix* mat);
 void emMatrixAddRow(em_matrix* mat);
+void emMatrixAddCol(em_matrix* mat);
 
 #endif /* EMATH_ALG_H_ */

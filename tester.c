@@ -35,6 +35,7 @@ int main(void){
 	emShowMatrix(&mat);
 	printf("\n");
 
+	emMatrixAddCol(&mat);
 	emMatrixAddRow(&mat);
 
 	emShowMatrix(&mat);

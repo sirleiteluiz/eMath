@@ -188,3 +188,17 @@ void emMatrixAddRow(em_matrix* mat){
 		}
 	}
 }
+
+void emMatrixAddCol(em_matrix* mat){
+	int i;
+	if(mat->initiated == INITIATED){
+		mat->columns++;
+		for(i=0;i<mat->rows;i++){
+			mat->numbers[i] = realloc(mat->numbers[i], (mat->columns)*sizeof(mat->numbers[0][0]));
+			if(!mat->numbers[i]){
+				emFreeMatrix(mat, mat->rows);
+				return;
+			}
+		}
+	}
+}
