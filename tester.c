@@ -30,6 +30,16 @@ int main(void){
 	emShowMatrix(&mat);
 	printf("\n");
 
+	emMatrixUnit(&mat);
+
+	emShowMatrix(&mat);
+	printf("\n");
+
+	emMatrixAddRow(&mat);
+
+	emShowMatrix(&mat);
+	printf("\n");
+
 	return 0;
 }
 

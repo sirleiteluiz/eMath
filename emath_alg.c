@@ -83,11 +83,13 @@ void emShowMatrix(const em_matrix* mat){
 	int i, j;
 	if(mat->initiated == INITIATED){
 		for(i=0; i<mat->rows; i++){
+
 			printf("| ");
 			for(j=0; j<mat->columns; j++){
 				printf("%lf ", mat->numbers[i][j]);
 			}
 			printf("|\n");
+
 		}
 	}
 	else{
@@ -144,4 +146,45 @@ void emMatrixConstMult (em_matrix* mat, const double value){
 	}
 
 	return;
+}
+
+void emMatrixUnit (em_matrix* mat){
+	int i, j;
+	if(mat->initiated == INITIATED){
+		for(i=0; i<mat->rows; i++){
+			for(j=0; j<mat->columns; j++){
+				if(mat->numbers[i][j]>ZERO){
+					mat->numbers[i][j] = 1.0;
+				}
+				else{
+					if(mat->numbers[i][j]<ZERO){
+						mat->numbers[i][j]=-1.0;
+					}
+					else {
+						mat->numbers[i][j]=0.0;
+					}
+				}
+			}
+		}
+	}
+}
+
+void emMatrixAddRow(em_matrix* mat){
+
+	if(mat->initiated == INITIATED){
+		mat->numbers = realloc(mat->numbers, (mat->rows + 1)*sizeof(mat->numbers[0]));
+		if(mat->numbers){
+
+			mat->numbers[mat->rows] = calloc(mat->columns, sizeof(mat->numbers[0][0]));
+			if(!mat->numbers[mat->rows]){
+				//FAILED TO ALLOCATE MEMORY
+				emFreeMatrix(mat, mat->rows);
+				return;
+			}
+			mat->rows++;
+		}
+		else{
+			emFreeMatrix(mat, mat->rows);
+		}
+	}
 }
